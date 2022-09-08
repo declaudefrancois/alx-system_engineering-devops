@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e {a..z}{z..a}\\n | grep -v oo |  grep -v '^[[:space:]]*$' | sort
+echo -e {a..z}{z..a}\\n | grep -v oo | sort
