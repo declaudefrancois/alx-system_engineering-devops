@@ -1,0 +1,2 @@
+#!/bin/bash
+echo {a..n}{a..n}, {a..z}{p..z}, {p..z}{a..z}, {p..z}{p..z} | sort
