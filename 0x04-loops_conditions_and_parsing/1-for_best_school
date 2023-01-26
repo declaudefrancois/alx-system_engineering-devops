@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Displays "Best School" 10 times.
-for i in {0..9};do
+
+
+for i in {0..9}; do
 	echo "Best School";
 done
