@@ -2,7 +2,7 @@
 # displays Best School 10 times using until loop.
 
 
-let "i = 0"
+i=0
 until (( i > 9 )); do
 	echo "Best School"
 	((i += 1));

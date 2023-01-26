@@ -2,7 +2,7 @@
 # Wisplays Best School 10 times using only while loop.
 
 
-let "i = 0"
+i=0
 while (( "$i" < 10 )); do
 	echo "Best School"
 	((i += 1));
