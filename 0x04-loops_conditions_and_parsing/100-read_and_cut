@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd,
+# taking only username, user id, and Home directory
+# path for the user.
+# Format bellow :
+# <username>:<user id>:<home directory>
+
+
+filename="/etc/passwd"
+while IFS= read -r line;
+do
+	IFS=':' read -r -a arr <<< "$line"
+	echo "${arr[0]}:${arr[2]}:${arr[5]}"
+done < $filename
