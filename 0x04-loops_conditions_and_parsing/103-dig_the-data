@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Starting from the prevouis apache log file.
+# Groups visitors by IP and HTTP status code, and displays this data.
+# The exact format must be:
+# 	OCCURENCE_NUMBER IP HTTP_CODE
+# 	In list format
+#	Ordered from the greatest to the lowest number of occurrences
+
+
+filename="apache-access.log"
+awk -F" " '{print $1,$9}' $filename | sort  | uniq -c | sort -r
