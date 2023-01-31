@@ -11,7 +11,7 @@ while (( "$i" < 21 )); do
 	case $i in
 
 		4)
-			echo "bad luck from china"
+			echo "bad luck from China"
 		;;
 
 		9)

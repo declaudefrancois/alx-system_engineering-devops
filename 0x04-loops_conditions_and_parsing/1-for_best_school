@@ -2,6 +2,7 @@
 # Displays "Best School" 10 times.
 
 
+# shellcheck disable=SC2034
 for i in {0..9}; do
 	echo "Best School";
 done
