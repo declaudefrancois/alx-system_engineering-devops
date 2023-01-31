@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# signal handler
+# Print a "To infinity and beyond" consiniously and
+# responds to SIGTERM signal  by printing "I am invincible!!!"
 
 
-
+trap  "echo 'I am invincible!!!'" SIGTERM
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
