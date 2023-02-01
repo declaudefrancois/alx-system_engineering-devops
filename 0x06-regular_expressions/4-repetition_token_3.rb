@@ -4,7 +4,7 @@
 
 word = ARGV[0]
 if word then
-  if word.match(/hbt+n/)
+  if word.match(/hbt*n/)
     puts word
   end
 end
