@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Install and configure nginx web server.
+
+# Install nginx
+apt-get update
+apt-get install -y nginx
+
+# Create the html page to serve.
+cat << EOF > /var/www/hello_world/index.html
+<html>
+	<head>
+		<title>Hello World!</title>
+	</head>
+	<body>
+		Hello World!
+	</body>
+</html>
+EOF
+
+# Configure nginx to serve that page.
+cat << EOF > /etc/nginx/sites-available/hello_world
+server {
+	listen 80;
+	root /var/www/hello_world;
+
+	location / {
+		index index.html;
+	}
+}
+EOF
+
+# Reload nginx
+nginx -s reload
