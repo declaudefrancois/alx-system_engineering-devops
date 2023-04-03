@@ -1,33 +1,26 @@
 #!/usr/bin/env bash
 # Install and configure nginx web server.
+# WARNING: Tis script must be executed with sudo rights.
 
 # Install nginx
-apt-get update
-apt-get install -y nginx
+apt-get update && apt-get install -y nginx
 
 # Create the html page to serve.
-cat << EOF > /var/www/hello_world/index.html
-<html>
-	<head>
-		<title>Hello World!</title>
-	</head>
-	<body>
-		Hello World!
-	</body>
-</html>
-EOF
+mkdir -p /var/www/hello_world
+echo "Hello World!" > /var/www/hello_world/index.html
 
 # Configure nginx to serve that page.
-cat << EOF > /etc/nginx/sites-available/hello_world
+cat << EOF > /etc/nginx/sites-enabled/default
 server {
-	listen 80;
-	root /var/www/hello_world;
-
+	listen 80 default_server;
+        listen [::]:80 default_server;
 	location / {
+		root /var/www/hello_world;
 		index index.html;
 	}
 }
 EOF
 
 # Reload nginx
-nginx -s reload
+service nginx restart
+#nginx -s reload
