@@ -16,7 +16,6 @@ cat << EOF >> /etc/haproxy/haproxy.cfg
 
 frontend lb-01-frontend
 	mode http
-	timeout client 30s
 	bind :80
 	default_backend lb-01-backend_servers
 
@@ -25,8 +24,8 @@ backend lb-01-backend_servers
 	balance roundrobin
 	option httpchk
 
-	server web-01 52.86.238.153:80 check
-	server web-02 54.236.33.249:80 check
+	server web-01 52.86.238.153:80 check port 80
+	server web-02 54.236.33.249:80 check port 80
 EOF
 
 # Apply configuration.
