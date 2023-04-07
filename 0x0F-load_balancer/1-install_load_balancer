@@ -22,10 +22,9 @@ frontend lb-01-frontend
 backend lb-01-backend_servers	
 	mode http
 	balance roundrobin
-	option httpchk
 
-	server web-01 52.86.238.153:80 check port 80
-	server web-02 54.236.33.249:80 check port 80
+	server 119337-web-01 52.86.238.153:80 check port 80
+	server 119337-web-02 54.236.33.249:80 check port 80
 EOF
 
 # Apply configuration.
