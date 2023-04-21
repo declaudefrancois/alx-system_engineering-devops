@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Configures HAproxy to automatically redirect HTTP traffic to HTTPS.
-
-
