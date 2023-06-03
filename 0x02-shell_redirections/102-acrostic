@@ -1,0 +1,2 @@
+#!/bin/bash
+awk -F"\n" '{print $1}' | awk -v FS="" -v ORS="" '{print $1}' && echo

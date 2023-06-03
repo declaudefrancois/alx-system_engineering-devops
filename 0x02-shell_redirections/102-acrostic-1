@@ -1,0 +1,2 @@
+#!/bin/bash
+awk -F"\n" '{print $1}' | awk -v FS="" '{ text = text $1 } END{ print text }'
