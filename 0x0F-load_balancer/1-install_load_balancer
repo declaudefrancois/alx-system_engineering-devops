@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on an ubuntu server.
+sudo apt update
+
