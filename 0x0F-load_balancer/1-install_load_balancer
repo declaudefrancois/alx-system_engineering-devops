@@ -1,4 +1,26 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy on an ubuntu server.
 sudo apt update
+sudo apt -y install haproxy
 
+cat << EOF | sudo tee /etc/haproxy/haproxy.cfg
+defaults
+	mode http
+
+frontend lb-01
+	bind *:80
+	timeout client 60s
+	mode http
+	default_backend servers
+
+backend servers
+	mode http
+	balance roundrobin
+	option httpchk
+	server web-01 100.25.13.40:80 check
+	server web-02 54.162.241.237:80 check
+EOF
+
+echo "ENABLED=1" > /etc/default/haproxy
+sudo systemctl enable haproxy.service
+sudo systemctl restart haproxy.service

@@ -5,6 +5,7 @@ package { 'nginx':
 
 $content = "server {
               listen 80 default;
+              server_name _;
               add_header X-Served-By ${hostname};
 
               rewrite ^/redirect_me\\/?$ https://www.youtube.com permanent;
@@ -22,6 +23,13 @@ file { '/etc/nginx/sites-available/default':
   content => $content,
   require => Package['nginx']
 }
+
+exec {'Enable nginx':
+  command => '/usr/bin/systemctl enable nginx',
+  user    => root,
+  require => Package['nginx']
+}
+
 
 exec {'Restart nginx':
   command => '/usr/sbin/service nginx restart',
