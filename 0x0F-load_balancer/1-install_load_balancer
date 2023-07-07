@@ -29,30 +29,11 @@ defaults
 	timeout http-request 15s
 	backlog 10000
 
-frontend lb-01
-	bind *:80
-	timeout client 60s
-	mode http
-	default_backend servers
-	maxconn 1000
-
-frontend stats
-        mode http
-        bind *:8404
-        stats enable
-        stats uri /stats
-        stats refresh 10s
-        stats admin if LOCALHOST
-
-backend servers
-	mode http
-	balance roundrobin
-	option httpchk port 80
-	http-check send meth GET uri /
+listen  nguvu-app
+	bind :80
 	server web-01 100.25.13.40:80 check port 80 maxconn 1000 maxqueue 100
 	server web-02 54.162.241.237:80 check port 80 maxconn 1000 maxqueue 100
 EOF
 
 echo "ENABLED=1" > /etc/default/haproxy
-sudo systemctl enable haproxy.service
 sudo systemctl restart haproxy.service
