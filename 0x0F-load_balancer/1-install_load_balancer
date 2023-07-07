@@ -11,6 +11,9 @@ defaults
 	option contstats
 	balance roundrobin
 
+	# preserve header case.
+	no option http-use-htx 
+
 	# wait for up to 30 seconds in the queue, after which HAProxy returns a 503 Service Unavailable.
 	timeout queue 30s
 
