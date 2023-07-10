@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script to fix the server so that it must be running, and listening on port 80 of all the server’s active IPv4 IPs.
+
+# TODO: this work as expected but writting & reading a file in the same pipe is not good, fix it.
+sed 's/status)/status)\n\t\trm -rf \/var\/run\/nginx.pid/' /etc/init.d/nginx | awk '{if($1=="DESC=nginx") {$1="DESC=nginx\n\npgrep nginx | head -n1 > /var/run/nginx.pid "} print $0}' > /etc/init.d/nginx
+sudo ln -fs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
