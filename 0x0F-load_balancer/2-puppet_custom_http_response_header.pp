@@ -3,25 +3,23 @@ package { 'nginx':
   ensure  => installed
 }
 
+
 $content = "server {
               listen 80 default;
               server_name _;
               add_header X-Served-By ${hostname};
-
-              rewrite ^/redirect_me\\/?$ https://www.youtube.com permanent;
-
-              location = / {
-                return 200 \"Hello World!\\n\";
-              }
-
+	      root /var/www/html/;
               location / {
-                return 404 \"Ceci n\'est pas une page\\n\\n\";
+                try_files \$uri \$uri/ \$uri.html =404;
               }
            }"
 
-file { '/etc/nginx/sites-available/default':
+file{'/var/www/html/index.html':
+  ensure  => present,
+  content => '<!DOCTYPE html><html><head></head><body><h1>Hello world !</h1></body></html>',
+  require => Package['nginx'],
+} -> file { '/etc/nginx/sites-available/default':
   content => $content,
-  require => Package['nginx']
 } -> exec {'Restart nginx':
   command => '/usr/sbin/service nginx restart',
   user    => root,
