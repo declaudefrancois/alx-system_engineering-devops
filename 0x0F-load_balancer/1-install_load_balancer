@@ -39,4 +39,4 @@ listen  nguvu-app
 EOF
 
 echo "ENABLED=1" > /etc/default/haproxy
-sudo systemctl restart haproxy.service
+sudo service haproxy restart

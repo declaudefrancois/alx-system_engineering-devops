@@ -22,23 +22,7 @@ $content = "server {
 file { '/etc/nginx/sites-available/default':
   content => $content,
   require => Package['nginx']
-}
-
-exec {'Enable nginx':
-  command => '/usr/bin/systemctl enable nginx',
-  user    => root,
-  require => Package['nginx']
-}
-
-
-exec {'Restart nginx':
+} -> exec {'Restart nginx':
   command => '/usr/sbin/service nginx restart',
   user    => root,
-  require => Package['nginx']
-}
-
-exec {'Reload nginx':
-  command => '/usr/sbin/nginx -s reload',
-  user    => root,
-  require => Package['nginx']
 }
