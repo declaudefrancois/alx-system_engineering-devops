@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Configure a server so that Nginx is running as the nginx user.
+
+# Kill apache2 running on 8080 and install nginx.
+sudo pkill apache2
+
+# Listen on 8080.
+sed -i 's/listen 80/listen 8080/; s/listen \[\:\:\]\:80/listen [::]:8080/' /etc/nginx/sites-available/default
+
+# Start nginx master as nginx user.
+sudo chown -R nginx:nginx /etc/nginx
+sudo -u nginx chmod u+rwx /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
