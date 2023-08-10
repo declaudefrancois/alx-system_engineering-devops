@@ -17,7 +17,7 @@ def top_ten(subreddit):
        Args:
             subreddit (str): The subreddit.
     """
-    url = "https://api.reddit.com/r/{}?limit=10"
+    url = "https://api.reddit.com/r/{}/hot.json?limit=10"
     url = url.format(subreddit)
     res = requests.get(url,
                        allow_redirects=False,

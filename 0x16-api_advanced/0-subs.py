@@ -19,7 +19,7 @@ def number_of_subscribers(subreddit):
        Returns:
             int: The numbers of subscribers. 0 If not a valid subreddit.
     """
-    url = "https://api.reddit.com/r/{}/about"
+    url = "https://api.reddit.com/r/{}/about.json"
     url = url.format(subreddit)
     res = requests.get(url,
                        allow_redirects=False,
