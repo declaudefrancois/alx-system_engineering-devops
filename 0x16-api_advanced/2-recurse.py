@@ -21,10 +21,10 @@ def recurse(subreddit, hot_list=[]):
     url = "https://api.reddit.com/r/{}/hot.json{}"
     count = len(hot_list)
     last_post = hot_list[-1].get('data') if count > 0 else None
-    after = last_post.get('name', '') if count > 0 else ''
-    after = '?after={}'.format(after) if after != '' else ''
+    qs = last_post.get('name', '') if count > 0 else ''
+    qs = '?after={}&limit=300'.format(qs) if qs != '' else '?limit=300'
 
-    res = requests.get(url.format(subreddit, after),
+    res = requests.get(url.format(subreddit, qs),
                        allow_redirects=False,
                        headers=headers)
     if res.status_code == 200:
@@ -32,4 +32,5 @@ def recurse(subreddit, hot_list=[]):
         hot_list += data.get('children', [])
         if data.get('after'):
             return recurse(subreddit, hot_list)
-    return [post.get('data').get('title') for post in hot_list]
+        return [post.get('data').get('title') for post in hot_list]
+    return None
