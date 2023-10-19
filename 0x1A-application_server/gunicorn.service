@@ -1,0 +1,9 @@
+[Unit]
+Description=Start Gunicorn to serve the content of /home/ubuntu/Airbnb_clone_v4/web_dynamic/2-hbnb.py
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/webdynamic.sh
+
+[Install]
+WantedBy=multi-user.target
