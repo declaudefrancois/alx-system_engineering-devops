@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+# reload Gunicorn in a graceful way.
+
+for worker_pid in $(pgrep gunicorn); do
+	kill -SIGHUP "$worker_pid";
+done
