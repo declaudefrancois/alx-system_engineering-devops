@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Start Gunicorn to serve web_dynamic/2-hbnb.py
 
 export PATH=/bin:/usr/bin:/usr/local/bin:/home/ubuntu/.local/bin
