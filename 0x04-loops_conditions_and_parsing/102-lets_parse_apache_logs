@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Parses apache log file, apache-access.log.
-# Displays the visitor IP along with the HTTP
-# status code from the Apache log file.
-
-
-filename="apache-access.log"
-awk -F" " '{print $1,$9}' $filename

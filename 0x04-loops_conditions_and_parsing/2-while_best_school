@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Wisplays Best School 10 times using only while loop.
-
-
-i=0
-while (( "$i" < 10 )); do
-	echo "Best School"
-	((i += 1));
-done

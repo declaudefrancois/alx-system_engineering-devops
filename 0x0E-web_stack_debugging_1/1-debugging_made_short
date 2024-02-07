@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# Bash script to fix the server so that it must be running, and listening on port 80 of all the server’s active IPv4 IPs.
-pgrep nginx | head -n1 > /var/run/nginx.pid
-sudo ln -fs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo nginx -s reload

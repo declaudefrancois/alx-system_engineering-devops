@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# forcefully kill 7-highlander process.
-
-pid=$(pgrep -a bash | grep 7-highlander | awk '{print $1}')
-if [ -n "$pid" ];
-then
-	kill -s SIGKILL "$pid";
-fi
