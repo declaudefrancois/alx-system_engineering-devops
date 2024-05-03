@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# User the previous script to get the PID of the current Bash process.
+source "./1-list_your_processes" | grep "bash"

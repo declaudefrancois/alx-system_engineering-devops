@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Loops from 1 to 10 and:
+# - displays bad luck for the 4th loop iteration
+# - displays good luck for the 8th loop iteration
+# - displays Best School for the other iterations
+
+i=0
+while [ $i -lt 10 ]; do
+	case $i in
+		4)
+		 echo "bad luck";
+		;;
+
+		8)
+		 echo "good luck";
+		;;
+
+		*)
+		 echo "Best School";
+		;;
+	esac
+	(( ++i ));
+done
