@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd.
+
+filename="/etc/passwd"
+
+while read -r line;
+do
+   cut -d ":" -f 1,4,7 <<< "$line";
+done < "$filename"

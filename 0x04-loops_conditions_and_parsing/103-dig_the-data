@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd, using the while loop + IFS.
+
+awk '{print $1 " " $9}' < apache-access.log
