@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Configures the system so that
+# 127.0.0.2 resolves to localhost
+# 8.8.8.8 resolves to facebook.com
+
+sed -i s/127.0.0.1\ *localhost// /etc/hosts
+echo "127.0.0.2 localhost" >> /etc/hosts
+
+echo "8.8.8.8 facebook.com" >> /etc/hosts
+
